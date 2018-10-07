@@ -7,7 +7,7 @@
 ;; This function uses recursive calls to create the quicksort algorithm
 (define (quicksort lista) "Quick sort program scheme"
    (cond ((null? lista) '())
-         (#t (append (quicksort (lessthan (cdr lista) (car lista))) (cons (car lista) (quicksort (greaterthan (cdr lista) (car lista)))))
+         (#t (cons (quicksort (lessthan (cdr lista) (car lista))) (cons (car lista) (quicksort (greaterthan (cdr lista) (car lista)))))
          )
    )
 )
