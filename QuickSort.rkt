@@ -5,7 +5,7 @@
 ;; Quick sort in Scheme
 
 ;; This function uses recursive calls to create the quicksort algorithm
-(define (quicksort lista) "Quick sort program scheme"
+(define (quicksort2 lista) "Quick sort program scheme"
    (cond ((null? lista) '()) ;; If list is empty, no more elements so return empty list
          (#t (append (quicksort (lessthan (cdr lista) (car lista))) (cons (car lista) (quicksort (greaterthan (cdr lista) (car lista)))))
          ) ;; Always execute quicksort until list is empty
@@ -37,4 +37,16 @@
          )
  )
 
-(quicksort (list 6 5 4 3 2 1))
+;; Function that detects if list has number or symbol
+(define (numberv listv)
+  (cond ((null? listv) '())
+    ((number? (car listv))  (cons (car listv) (numberv (cdr listv)))) ;; if it is a number return number plus rest of list filtered
+    (else (cons '0 (numberv (cdr listv)))) ;; if not number return 0 plus rest of list filtered
+    ) 
+  )
+
+(define (quicksort listq)
+   (quicksort2 (numberv listq))
+  )
+
+(quicksort (list 6 5 4 3 2 1 'blue))

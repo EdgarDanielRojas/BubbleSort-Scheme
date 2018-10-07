@@ -26,6 +26,14 @@
 ;;(bubblesort (list 4 3 2 1))
 ;; Added this function just so user doesn't have to input list size
 (define (actualsort2 listf)
-  (actualsort listf (length listf)) ;;Pass list and list size to actual sort
+  (actualsort (numberv listf) (length listf)) ;;Pass list and list size to actual sort
   )
-(actualsort2 (list 4 3 2 1))
+
+;; Function that detects if list has number or symbol
+(define (numberv listv)
+  (cond ((null? listv) '())
+    ((number? (car listv))  (cons (car listv) (numberv (cdr listv)))) ;; if it is a number return number plus rest of list filtered
+    (else (cons '0 (numberv (cdr listv)))) ;; if not number return 0 plus rest of list filtered
+    ) 
+  )
+(actualsort2 (list 4 3 2 1 'blue))
