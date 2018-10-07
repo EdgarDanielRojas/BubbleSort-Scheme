@@ -5,9 +5,9 @@
 ;; Bubble sort in Scheme
 
 (define (bubblesort lista) "Bubble sort program scheme"
-   (cond ((null? (cdr lista)) lista)
+   (cond ((null? lista) '())
          ((> (car lista) (cadr lista)) 
-           (cons (cadr lista) (bubblesort (cons (car lista) (cdr (cdr lista)))))
+           (bubblesort (cons (cadr lista) (cons (car lista) (cdr lista))))
          )
          (else (cons( (car lista) (bubblesort (cdr lista))))
          )
